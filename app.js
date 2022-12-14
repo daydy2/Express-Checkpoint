@@ -10,7 +10,7 @@ app.set("views", "views");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-const date = new Date("December 4, 2022 01:15:00");;
+const date = new Date("December 4, 2022 01:15:00");
 const day = date.getDay();
 const hour = date.getHours();
 
@@ -27,22 +27,23 @@ if (day > 5 || hour < 9 || hour > 17) {
       pageTitle: "Home",
     });
   });
-  app.get('/service', (req, res, next) => {
-    res.render('service/service',{
-        pageTitle: 'Service'
-    })
-  })
-  app.get('/contact', (req, res, next) => {
-    res.render('contactUs/contact', {
-        pageTitle: 'Contact Us'
-    })
-  })
+  app.get("/service", (req, res, next) => {
+    res.render("service/service", {
+      pageTitle: "Service",
+    });
+  });
+  app.get("/contact", (req, res, next) => {
+    res.render("contactUs/contact", {
+      pageTitle: "Contact Us",
+    });
+  });
 }
+
 const getError = (req, res, next) => {
-    res.status(404).render('error',{
-        pageTitle: '404'
-    })
-}
-app.use(getError)
+  res.status(404).render("error", {
+    pageTitle: "404",
+  });
+};
+app.use(getError);
 
 app.listen(3000);
